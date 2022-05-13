@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="This is where your description goes">
+<meta name="keywords" content="one, two, three">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amatic+SC&family=Creepster&display=swap" rel="stylesheet">
+
+<title>Is it Friday the 13th??</title>
+
+<!-- external CSS link -->
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>Is it  <span>Friday the 13th</span>??</h1>
+<h3 class="dateDisplay" title="Click here to see the date">Today is...</h3>
+<h3 class="friday13"></h3>
+<script>
+document.querySelector('.dateDisplay').addEventListener('click', currentDate)
+
+function currentDate(){
+    console.log("it's clicked")
+    let today = new Date();
+    console.log(today)
+    console.log(today.getDay())
+    var weekday = today.getDay()
+    switch (weekday){
+        case 0:
+            weekday = "Sunday"
+            break
+        case 1:
+            weekday = "Monday"
+            break
+        case 2:
+            weekday = "Tuesday"
+            break
+        case 3:
+            weekday = "Wednesday"
+            break
+        case 4:
+            weekday = "Thursday"
+            break
+        case 5:
+            weekday = "Friday"
+            break
+        case 6:
+            weekday = "Saturday"
+            break
+    }
+    var mm = today.getMonth()
+    switch (mm){
+        case 0:
+            mm = "Jan"
+            break
+        case 1:
+            mm = "Feb"
+            break
+        case 2:
+            mm = "Mar"
+            break
+        case 3:
+            mm = "Apr"
+            break
+        case 4:
+            mm = "May"
+            break
+        case 5:
+            mm = "Jun"
+            break
+        case 6:
+            mm = "Jul"
+            break
+        case 7:
+            mm = "Aug"
+            break
+        case 8:
+            mm = "Sep"
+            break
+        case 9:
+            mm = "Oct"
+            break
+        case 10:
+            mm = "Nov"
+            break
+        case 11:
+            mm = "Dec"
+            break
+    }
+    var dd = String(today.getDate()).padStart(2, '0');
+    var yyyy = today.getFullYear();
+    
+    today = `${weekday} ${mm} ${dd}`;
+    if(weekday === "Friday" && dd === "13"){
+        var audio = new Audio("MovieTheme.mp3")
+        audio.play()
+        document.querySelector('.friday13').style.display = 'block'
+        document.querySelector('.friday13').innerHTML = `FRIDAY THE 13TH!!!`
+        document.querySelector('body').style.backgroundImage = "url('campNight.webp')"
+    }else{
+    document.querySelector('.dateDisplay').innerHTML = `Today is ${today}, just a normal day...`
+    }
+}
+</script>
+</body>
+</html>
